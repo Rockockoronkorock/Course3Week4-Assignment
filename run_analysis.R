@@ -1,6 +1,7 @@
 # Load required tidyverse libraries
 library(dplyr)
 library(tidyr)
+library(dataMaid)
 
 # Assumption is that you are in the correct working directory
 # Setwd()...
@@ -42,9 +43,8 @@ colnames(data)[colnames(data)=="V1"] <- "Subject"
 avg_data <- data %>% group_by(Subject, Activity) %>% summarise_all(funs(mean = mean)) 
 
 # Write Data
-write.table(data, "./all_data.txt")
-write.table(avg_data, "./avg_data.txt")
-
+write.table(data, "./all_data.txt", row.names = FALSE)
+write.table(avg_data, "./avg_data.txt", row.names = FALSE)
 
 
 
